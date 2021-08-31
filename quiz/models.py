@@ -10,7 +10,7 @@ class Question(models.Model):
     text = models.CharField("soru metni", max_length=255)
     pub_date = models.DateTimeField('ekleme tarihi')
     degree = models.PositiveSmallIntegerField("zorluk derecesi",default=1)
-    subject = models.CharField("konu", max_length=30)
+    subject = models.CharField("konu", max_length=30, default="Genel")
 
     def was_published_recently(self):
         return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
