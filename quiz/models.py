@@ -10,16 +10,10 @@ class Question(models.Model):
     text = models.CharField("soru metni", max_length=255)
     pub_date = models.DateTimeField('ekleme tarihi')
     degree = models.PositiveSmallIntegerField("zorluk derecesi",default=1)
+    subject = models.CharField("konu", max_length=30)
 
     def was_published_recently(self):
         return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
-
-class Tag(models.Model):
-    def __str__(self):
-        return self.text
-
-    question = models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name="sahip soru")
-    text = models.CharField("konu", max_length=30)
 
 class Choice(models.Model):
     def __str__(self):
