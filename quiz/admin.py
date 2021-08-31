@@ -7,7 +7,7 @@ class ChoiceInline(admin.TabularInline):
     extra = 0
 
 class QuestionAdmin(admin.ModelAdmin):
-    fields = ['text','pub_date','degree']
+    fields = ['text','pub_date','degree','subject']
     inlines = [ChoiceInline]
     list_display = ('text', 'degree', 'subject', 'pub_date')
     list_filter = ['pub_date', 'degree', 'subject']
